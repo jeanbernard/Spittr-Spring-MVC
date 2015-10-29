@@ -93,6 +93,14 @@
 			<artifactId>spring-context</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+
 		<!-- Other Web dependencies -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -153,7 +161,7 @@
 			<artifactId>thymeleaf</artifactId>
 			<version>2.1.4.RELEASE</version>
 		</dependency>
-		
+
 	</dependencies>
 
 	<build>
@@ -333,6 +341,15 @@
 					<version>${selenide.version}</version>
 					<scope>test</scope>
 				</dependency>
+
+				<!-- Junit -->
+
+				<dependency>
+					<groupId>junit</groupId>
+					<artifactId>junit</artifactId>
+					<version>4.12</version>
+				</dependency>
+
 
 				<!-- Cucumber-Java -->
 
