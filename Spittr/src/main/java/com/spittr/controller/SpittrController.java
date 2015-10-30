@@ -21,7 +21,7 @@ public class SpittrController {
 	@RequestMapping(value="/spittles", method=RequestMethod.GET)
 	public String spittles(Model model){
 		model.addAttribute("spittleList", spittleRepository.createSpittleList(3));	
-		return "redirect:spittles";
+		return "spittles";
 	}
 
 }
