@@ -12,17 +12,17 @@ import com.spittr.repository.SpittleRepository;
 @RequestMapping("/spittles")
 public class SpittrController {
 	
-	private SpittleRepository spittleRepository;
-	
-	@Autowired
-	public SpittrController(SpittleRepository spittleRepository) {
-		this.spittleRepository = spittleRepository;
-	}
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public String spittles(Model model){
-		model.addAttribute("spittleList", spittleRepository.findSpittles(Long.MAX_VALUE, 20));	
-		return "spittles";
-	}
+//	private SpittleRepository spittleRepository;
+//	
+//	@Autowired
+//	public SpittrController(SpittleRepository spittleRepository) {
+//		this.spittleRepository = spittleRepository;
+//	}
+//	
+//	@RequestMapping(method=RequestMethod.GET)
+//	public String spittles(Model model){
+//		model.addAttribute("spittleList", spittleRepository.findSpittles(Long.MAX_VALUE, 20));	
+//		return "spittles";
+//	}
 
 }
