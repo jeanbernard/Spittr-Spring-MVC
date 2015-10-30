@@ -7,4 +7,6 @@ import com.spittr.domain.Spittle;
 
 public interface SpittleRepository {
 	List<Spittle> findSpittles(long max, int count);
+	Spittle createSpittle();
+	List<Spittle> createSpittleList(int count);
 }

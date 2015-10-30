@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.spittr.repository.SpittleRepositoryImpl;
 
 @Controller
-@RequestMapping("/spittles")
 public class SpittrController {
 	
 	private SpittleRepositoryImpl spittleRepository;
@@ -18,11 +17,11 @@ public class SpittrController {
 	public SpittrController(SpittleRepositoryImpl spittleRepository) {
 		this.spittleRepository = spittleRepository;
 	}
-	
-	@RequestMapping(method=RequestMethod.GET)
+
+	@RequestMapping(value="/spittles", method=RequestMethod.GET)
 	public String spittles(Model model){
-		model.addAttribute("spittleList", spittleRepository.findSpittles(Long.MAX_VALUE, 20));	
-		return "spittles";
+		model.addAttribute("spittleList", spittleRepository.createSpittleList(3));	
+		return "redirect:spittles";
 	}
 
 }
