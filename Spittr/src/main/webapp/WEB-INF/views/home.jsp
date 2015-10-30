@@ -7,6 +7,7 @@
 <body>
 	<h1>Welcome to Spittr</h1>
 	<a href="<c:url value="/spittles" />">Spittles</a>
+	<a href="<c:url value="/show" />">Spittle</a>
 	<a href="<c:url value="/spittles/register" />">Register</a>
 </body>
 </html>

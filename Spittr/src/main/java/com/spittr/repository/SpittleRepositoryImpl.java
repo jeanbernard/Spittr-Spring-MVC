@@ -16,7 +16,7 @@ public class SpittleRepositoryImpl implements SpittleRepository {
 	@Override
 	public Spittle createSpittle() {
 		
-		Spittle spittle = new Spittle("The struggle is real", new Date());
+		Spittle spittle = new Spittle(1l,"The struggle is real", new Date());
 		
 		return spittle;
 	}
@@ -27,11 +27,19 @@ public class SpittleRepositoryImpl implements SpittleRepository {
 		List<Spittle> spittles = new ArrayList<>();
 		
 		for(int i = 0; i < count; i++) {
-			spittles.add(new Spittle("klk this is spittle # " + i , new Date()));
+			spittles.add(new Spittle(1l, "klk this is spittle # " + i , new Date()));
 		}
 		
 		return spittles;	
 		
+	}
+
+	@Override
+	public Spittle findSpittle(long spittleId) {
+		
+		Spittle spittle = new Spittle(spittleId, "First ever Spittle!", new Date());
+		
+		return spittle;
 	}
 	
 

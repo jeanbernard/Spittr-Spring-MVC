@@ -9,8 +9,8 @@ public class Spittle {
 	private Double latitude;
 	private Double longitude;
 	
-	public Spittle(String message, Date time) {
-		this.spittleId = null;
+	public Spittle(Long spittleId, String message, Date time) {
+		this.spittleId = spittleId;
 		this.message = message;
 		this.time = time;
 	}

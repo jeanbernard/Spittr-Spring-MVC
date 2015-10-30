@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.servlet.view.InternalResourceView;
 
 import com.spittr.controller.SpittrController;
 import com.spittr.domain.Spittle;
@@ -28,9 +28,9 @@ public class SpittrControllerTest {
 	
 		List<Spittle> expectedSpittles = new ArrayList<>();
 		
-		Spittle spittle1 = new Spittle("klk this is spittle # " + 14 , new Date());
-		Spittle spittle2 = new Spittle("klk this is spittle # " + 25 , new Date());
-		Spittle spittle3 = new Spittle("klk this is spittle # " + 35 , new Date());
+		Spittle spittle1 = new Spittle(1l, "klk this is spittle # " + 14 , new Date());
+		Spittle spittle2 = new Spittle(1l, "klk this is spittle # " + 25 , new Date());
+		Spittle spittle3 = new Spittle(1l, "klk this is spittle # " + 35 , new Date());
 		
 		expectedSpittles.add(spittle1);
 		expectedSpittles.add(spittle2);
@@ -51,7 +51,7 @@ public class SpittrControllerTest {
 	@Test
 	public void createSpittle() throws Exception {
 		
-		Spittle expectedSpittle = new Spittle("The struggle is real", new Date());
+		Spittle expectedSpittle = new Spittle(1l, "The struggle is real", new Date());
 		SpittleRepositoryImpl mockRepository = mock(SpittleRepositoryImpl.class);
 			when(mockRepository.createSpittle()).thenReturn(expectedSpittle);
 	
@@ -62,6 +62,23 @@ public class SpittrControllerTest {
 		.andExpect(model().attributeExists("spittleList"))
 		.andExpect(model().attribute("spittleList", containsString(expectedSpittle.getMessage())));
 
+	}
+	
+	@Test
+	public void shouldShowSingleSpittle() throws Exception {
+		
+		long spittleId = 1l;
+		Spittle expectedSpittle = new Spittle(1l, "First ever Spittle!", new Date());
+		SpittleRepositoryImpl mockRepository = mock(SpittleRepositoryImpl.class);
+			when(mockRepository.findSpittle(1l)).thenReturn(expectedSpittle);
+			
+		SpittrController controller = new SpittrController(mockRepository);
+		MockMvc mockMvc = standaloneSetup(controller).setSingleView(new InternalResourceView("/WEB-INF/views/spittle.jsp")).build();
+		mockMvc.perform(get("/spittle/" + spittleId))
+		.andExpect(view().name("spittle"))
+		.andExpect(model().attributeExists("spittleId"))
+		.andExpect(model().attribute("spittleId", expectedSpittle));
+	
 	}
 	
 	
