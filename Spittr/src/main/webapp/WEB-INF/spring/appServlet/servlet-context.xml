@@ -23,14 +23,18 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
-	<!-- Definition of Spittr Repository bean  -->
-	
+
+	<!-- Definition of Spittr Repository bean -->
+
 	<beans:bean id="spittleRepository" class="com.spittr.repository.SpittleRepositoryImpl">
 	</beans:bean>
-	
+
+	<beans:bean id="userRepository" class="com.spittr.repository.UserRepositoryImpl">
+	</beans:bean>
+
 	<beans:bean id="spittrController" class="com.spittr.controller.SpittrController">
 		<beans:constructor-arg index="0" ref="spittleRepository" />
+		<beans:constructor-arg index="1" ref="userRepository" />
 	</beans:bean>
 
 	<context:component-scan base-package="com.spittr.controller" />

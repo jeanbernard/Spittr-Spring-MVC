@@ -11,8 +11,13 @@
 		<li id="spittle_<c:out value ="spittle.id" />">
 			<div class="spittleMessage">
 				<h3>
-					<c:out value="${spittle.message}" />
+					<c:out value="${spittleId.message}" />
 				</h3>
+			</div>
+			<div>
+				<p>
+					<c:out value="${spittleId.time}" />
+				</p>
 			</div>
 	</ul>
 </body>
