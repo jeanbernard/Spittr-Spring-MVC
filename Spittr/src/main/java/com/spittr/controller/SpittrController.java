@@ -18,12 +18,14 @@ public class SpittrController {
 	public SpittrController(SpittleRepositoryImpl spittleRepository) {
 		this.spittleRepository = spittleRepository;
 	}
-
+	
 	@RequestMapping(value="/spittles", method=RequestMethod.GET)
 	public String spittles(Model model){
 		model.addAttribute("spittleList", spittleRepository.createSpittleList(3));	
 		return "spittles";
 	}
+	
+	/* Taking input via path parameters. Resource oriented controllers */
 	
 	@RequestMapping(value="spittle/{spittleId}", method=RequestMethod.GET)
 	public String showSpittle(
