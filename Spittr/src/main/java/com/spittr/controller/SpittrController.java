@@ -52,11 +52,8 @@ public class SpittrController {
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String submitRegistrationForm(User user) {
-		
 		userRepository.saveUser(user);
-		
 		return "redirect:/register/" + user.getUsername();
-		
 	}
 	
 	@RequestMapping(value="register/{username}", method=RequestMethod.GET)
